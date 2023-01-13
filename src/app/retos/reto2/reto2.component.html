@@ -1,0 +1,28 @@
+<section class="container mt-5">
+  <section class="m-3">
+    <label for="monto"></label>
+    <input type="number" name="monto" id="monto" [(ngModel)]="monto">
+  </section>
+  <section class="m-3">
+    <select name="tipo" [(ngModel)]="tipo" (change)="add()">
+      <option value="">Seleccione tipo moneda</option>
+      <option *ngFor="let moneda of monedas" value="{{moneda}}">{{moneda}}</option>
+    </select>
+
+  </section>
+  <p>{{monto | currency : tipo }}</p>
+  <table class="table table-bordered table-hover border">
+    <thead>
+      <th>Indice</th>
+      <th>Valor</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let val of lista; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{val.Monto | currency: val.Moneda }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <pre>{{obj | json}}</pre>
+</section>

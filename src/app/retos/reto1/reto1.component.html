@@ -1,0 +1,29 @@
+<section class="container">
+</section>
+<section class="container-sm">
+  <section class="border p-5 mt-5">
+    <h1 class="text-center">USO DE PIPES</h1>
+    <form [formGroup]="pipesForm">
+
+      <section class="form-group m-3">
+        <label for="valor">Valor:</label>
+        <input type="text" class="form-control" placeholder="Ingrese un valor" formControlName="valor"
+          [ngStyle]="{'border-color': valor?.invalid && (valor?.dirty || valor?.touched)?'red':'lightgray'}">
+        <section *ngIf="valor?.invalid && (valor?.dirty || valor?.touched)">
+          <section *ngIf="valor?.errors?.['required']" class="alert alert-success">
+            El valor es obligatorio
+          </section>
+          <section *ngIf="valor?.errors?.['pattern']" class="alert alert-success">
+            El valor debe tener solo letras
+          </section>
+        </section>
+        <p class="mt-5 text-center">Resultado: <strong>{{ pipesForm.value.valor | uppercase }} </strong></p>
+      </section>
+
+      <section class="form-group m-3 text-center">
+        <input type="button" value="Refrescar" class="btn btn-outline-success rounded-pill btn-lg m-3 col-4"
+          (click)="Refrescar()">
+      </section>
+    </form>
+  </section>
+</section>
